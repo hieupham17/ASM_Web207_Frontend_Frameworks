@@ -1,0 +1,80 @@
+<style>
+    .col .card img:hover {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+
+    /* sản phẩm */
+    .col-md-3 .card a>img:hover {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+
+    .col-md-3 .card a>img {
+        cursor: pointer;
+        overflow: hidden;
+        transition: all 0.3s ease-in-out;
+        overflow: hidden;
+        max-width: 100%;
+    }
+
+    .row .col-md-3 a {
+        text-decoration: none;
+        color: black;
+    }
+</style>
+<div class="container">
+
+    <div class="title text-center" style="font-size: 34px; font-weight: bold; margin: 12px 0px 12px 0px;">Danh sách
+        chuyến bay hiện có</div>
+    <h2> {{title}} </h2>
+
+    <a style="margin-left: 91.5%;" href=" #!/add-product">
+        <button class="btn btn-primary my-2">Thêm vé</button>
+     </a>
+
+    <!-- danh sách sản phẩm -->
+    <!-- ng-controller dùng chung với home để show prod -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3" ng-repeat="item in VeMayBay track by $index">
+                <a href="#!/detail-product/{{item.id}}">
+                    <div class="card" style="width: 18rem; margin: 5px; border: rgb(228, 224, 224) 1px solid;">
+                        <!-- Hình ảnh -->
+                        <img ng-src=" {{item.anh}} " class="card-img-top" width="auto" height="191.2px">
+                    </a>
+                        <div class="card-body">
+                            <!-- Tên chuyến bay -->
+                            <p class="card-text" style="font-size: 20px;"> {{item.ten}} </p>
+                            <!-- Ngày -->
+                            <p style="margin-bottom: 10px; font-size: 15px;" class="card-text">{{item.ngay_bat_dau |
+                                date :
+                                'dd/MM/yyyy'}} -
+                                {{item.ngay_ket_thuc | date: 'dd/MM/yyyy'}}
+                            </p>
+                            <!-- Giá -->
+                            <p style="margin: 0px;">Từ <Strong style="font-size: 20px;color: red;"> {{item.gia_tien |
+                                    currency: '': 0}}
+                                </Strong>
+                                VNĐ</p>
+                            <a href="#!/detail-product/{{item.id}}">
+                                <button class="btn btn-warning my-2">update</button>
+
+                            </a>
+                            <button class="btn btn-outline-danger my-2" ng-click="delete(item.id)">delete</button>
+                        </div>
+                    </div>
+               
+            </div>
+        </div>
+    </div>
+    <div class="from-group" style="margin-left: 17px;">
+        <a href="#!/trang-chu"> <button class="btn btn-outline-secondary btn-sm "> <svg
+                    xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-back" width="24"
+                    height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M9 11l-4 4l4 4m-4 -4h11a4 4 0 0 0 0 -8h-1" />
+                </svg> Back</button></a>
+    </div>
+</div>

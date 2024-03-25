@@ -1,0 +1,33 @@
+<div class="container fluid" style="width: 780px;">
+   <h2> {{title}}</h2>
+    <form action="">
+        <div class="form-group">
+            <label for="" class="form-label">Tên chuyến bay</label>
+            <input type="text" class="form-control" ng-model="product.ten" disabled>
+            
+        </div>
+        <div class="form-group">
+            <label for="" class="form-label">Ảnh</label>
+            <input type="text" class="form-control" ng-model="product.anh" disabled>
+        </div>
+        <div class="form-group">
+            <label for="" class="form-label">Ngày bắt đầu</label>
+            <input type="date" class="form-control" ng-model="product.ngayBatDau" disabled>
+            <!-- Sử dụng filter date trong template để định dạng ngày hiển thị -->
+<!-- <input type="date" class="form-control" ng-model="product.ngayBatDau | date:'yyyy-MM-dd'" /> -->
+
+           
+        </div>
+        <div class="form-group">
+            <label for="" class="form-label">Ngày kết thúc</label>
+            <input type="date" class="form-control" ng-model="product.ngayKetThuc" disabled>
+        </div>
+        <div class="form-group">
+            <label for="" class="form-label">Giá tiền</label>
+            <input type="number" class="form-control" min="1"  ng-model="product.giaTien" disabled>
+        </div>
+       <a href="#!/update-product/{{product.id}}"><button class="btn btn-warning my-2">Update</button> </a> 
+    <a href="#!/list-product"><button class="btn my-2 btn-outline-secondery">Back to List Product</button></a>
+    </form>
+    
+</div>

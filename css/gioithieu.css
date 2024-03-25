@@ -1,0 +1,17 @@
+.tieude >p{
+    font-size: 16px;
+    color: #ff0000;
+    line-height: 24px;
+    font-style: italic;
+    font-weight: bolder;
+}
+.tieude{
+    margin: 0px;
+    color: black;
+
+}
+footer{
+    font-size: 12.5pt;
+    font-style: normal;
+    font-weight: bold;
+}

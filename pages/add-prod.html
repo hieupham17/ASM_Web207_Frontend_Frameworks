@@ -1,0 +1,67 @@
+
+<!-- form thêm sản phẩm -->
+<div class="container fluid" style="width: 780px;">
+    <div class="title text-center" style="font-size: 34px; font-weight: bold; margin: 12px 0px 12px 0px;">Thêm chuyến bay</div>
+  
+    <form action="" ng-submit="add()">
+        <div class="form-group">
+            <label for="" class="form-label">Tên chuyến bay</label>
+            <input type="text" class="form-control" placeholder="Start - end" ng-model="product.ten">
+            
+        </div>
+        <div class="form-group">
+            <label for="" class="form-label">Ảnh</label>
+            <input type="text" class="form-control" placeholder="Nhập link hình ảnh..."  ng-model="product.anh">
+        </div>
+        <div class="form-group">
+            <label for="" class="form-label">Ngày bắt đầu</label>
+            <input type="date" class="form-control"  ng-model="product.ngay_bat_dau">
+        </div>
+        <div class="form-group">
+            <label for="" class="form-label">Ngày kết thúc</label>
+            <input type="date" class="form-control"  ng-model="product.ngay_ket_thuc">
+        </div>
+        <div class="form-group">
+            <label for="" class="form-label">Giá tiền</label>
+            <input type="number" class="form-control" placeholder="Nhập giá tiền..." min="1"  ng-model="product.gia_tien">
+        </div>
+        <button class="btn btn-primary my-2">Thêm sản phẩm</button>
+    <a href="#!/list-product"><button class="btn my-2 btn-outline-secondery">Back to List Product</button></a>
+    </form>
+    
+</div>
+
+<!-- 
+<div class="title text-center" style="font-size: 34px; font-weight: bold; margin: 12px 0px 12px 0px;">Danh sách chuyến bay hiện có</div>
+
+<div class="container" ng-controller="homeController">
+    <div class="row">
+        <div class="col-md-3" ng-repeat="item in list track by $index">
+            <a href="">
+                <div class="card" style="width: 18rem; margin: 5px; border: rgb(228, 224, 224) 1px solid;">
+                   
+                    <img ng-src=" {{item.anh}} " class="card-img-top" width="auto" height="191.2px">
+                    <div class="card-body">
+                       
+                        <p class="card-text" style="font-size: 20px;"> {{item.ten}} </p>
+                       
+                        <p style="margin-bottom: 10px; font-size: 15px;" class="card-text">{{item.ngay_bat_dau | date :
+                            'dd/MM/yyyy'}} -
+                            {{item.ngay_ket_thuc | date: 'dd/MM/yyyy'}}
+                        </p>
+                       
+                        <p style="margin: 0px;">Từ <Strong style="font-size: 20px;color: red;"> {{item.gia_tien |
+                                currency: '': 0}}
+                            </Strong>
+                            VNĐ</p>
+                            <button class="btn btn-primary my-2" ng-click="edit($event,item.id)">Đặt vé</button>
+                            <button class="btn btn-outline-secondery my-2" ng-click="edit($event,item.id)">More</button>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+</div> -->
+
+

@@ -1,0 +1,36 @@
+{
+  "VeMayBay": [
+    {
+      "id": "0ce5",
+      "ten": "Bắc Ninh - Sơn La",
+      "anh": "https://media.vneconomy.vn/w800/images/upload/2022/05/13/den-son-la-dung-quen-kham-pha-nhung-dia-danh-tuyet-dep-nay-ivivu-29.jpg",
+      "gia_tien": 9000000,
+      "ngay_bat_dau": "2023-02-01T17:00:00.000Z",
+      "ngay_ket_thuc": "2024-01-31T17:00:00.000Z"
+    },
+    {
+      "id": "d66f",
+      "ten": "Châu Âu - Việt Nam",
+      "anh": "https://d1hjkbq40fs2x4.cloudfront.net/2017-08-21/files/landscape-photography_1645.jpg",
+      "gia_tien": 23000000,
+      "ngay_bat_dau": "2020-12-31T17:00:00.000Z",
+      "ngay_ket_thuc": "2021-12-31T17:00:00.000Z"
+    },
+    {
+      "id": "e83b",
+      "ten": "Hà lan - hàn quốc",
+      "anh": "https://duhocvietglobal.com/wp-content/uploads/2018/06/datnuochanquoc.jpg",
+      "gia_tien": 44000000,
+      "ngay_bat_dau": "2023-12-31T17:00:00.000Z",
+      "ngay_ket_thuc": "2024-01-24T17:00:00.000Z"
+    },
+    {
+      "id": "ea5b",
+      "ten": "Cà Mau - Kiên Giang",
+      "anh": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Beomeosa_Temples.JPG/375px-Beomeosa_Temples.JPG",
+      "gia_tien": 12000,
+      "ngay_bat_dau": "2023-12-27T17:00:00.000Z",
+      "ngay_ket_thuc": "2024-02-14T17:00:00.000Z"
+    }
+  ]
+}

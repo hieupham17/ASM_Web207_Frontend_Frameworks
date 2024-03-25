@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <!-- Nhúng Boostrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+
+
+    <!-- Nhúng Angualar -->
+    <!-- <script src="./js/angular.min.js"></script>
+    <script src="./js/angular-route.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script>
+
+   
+
+    <!-- <script src="./controller/app.js"></script> -->
+    <script src="./controller/ListProductController.js"></script>
+    <script src="./controller/AddProductcontroller.js"></script>
+    <script src="./controller/DetailProductController.js"></script>
+    <script src="./controller/EditProductController.js"></script>
+    <!-- Nhúng CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        body {
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        .content>ul>li {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .col .card>img:hover {
+            transform: scale(1.1);
+            opacity: 0.8;
+        }
+
+        .col .card>img {
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+            overflow: hidden;
+            max-width: 100%;
+        }
+
+        .col>.card>.name {
+            position: absolute;
+            color: #ff0000;
+            font-weight: bolder;
+            bottom: 0px;
+            left: 50%;
+            text-transform: uppercase;
+            font-size: 22px;
+
+            transform: translateX(-50%);
+            transition: all 0.3s ease-in-out;
+            opacity: 0;
+        }
+
+        .col>.card:hover .name {
+            bottom: 40%;
+            opacity: 1;
+        }
+
+        .col>.card> {
+            position: relative;
+            display: block;
+        }
+
+
+        .box>.row {
+            padding: 15px;
+        }
+
+        .col-md-4>.row {
+            padding: 12px;
+        }
+
+        .row>.col>.title {
+            color: rgb(224, 62, 45);
+            font-family: Arial;
+            font-weight: 600;
+            font-size: 45px;
+        }
+
+        .row>.col>.content {
+            line-height: 1.3;
+            font-size: 20pxpx;
+        }
+
+        .col-md-2 .title {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body ng-app="myApp">
+
+    <nav class="navbar navbar-expand-lg bg-primary ">
+
+        <div class="container col-md-12">
+            <a href="#!/home" class=" me-5 ">
+                <img src="../images/lg.png" alt="Logo" class="d-block align-text-top"
+                    style="height: 70px; width: auto;" />
+            </a>
+            <div class="container-fluid">
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active text-white" aria-current="page" href="#!/home">Trang chủ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active text-white" aria-current="page" href="#!/gioi-thieu">Giới
+                                thiệu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active text-white" aria-current="page" href="#!/tin-tuc">Tin tức</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active text-white" aria-current="page" href="#!/lien-he">Liên hệ</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link active text-white" aria-current="page" href="#!/dat-ve">Đặt vé</a>
+                        </li>
+
+                    </ul>
+                    <form class="d-flex" role="search" ng-submit="searchProduct()">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                            ng-model="searchKeyword">
+                        <button class="btn btn-success" type="submit"
+                            style="color: rgb(255, 255, 255); width: 130px;">Tìm kiếm</button>
+                    </form>
+                    <li class="nav-item dropdown list-unstyled mx-2">
+                        <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Manager
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#!/list-product">Vé</a></li>
+                            <li><a class="dropdown-item" href="#">Action 2</a></li>
+                            <!-- <li><hr class="dropdown-divider"></li> -->
+                            <li><a class="dropdown-item" href="#">Action 3</a></li>
+                        </ul>
+                    </li>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <marquee class="bg-warning fw-bolder" direction="right">
+        <span class="text-uppercase text-primary fst-italic text-small">Fly up</span> Đồng hành cùng bạn trên mọi chuyến
+        bay! <span class="text-white">></span>
+    </marquee>
+    <!-- Content -->
+    <ng-view></ng-view>
+    <!-- End content -->
+
+    <!-- Slide -->
+
+    <!-- <div id="carouselExampleDark" class="carousel carousel-dark slide container-fuild">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="10000">
+                <img src="../images/banner2.jpg" class="d-block w-100" alt="...">
+
+            </div>
+            <div class="carousel-item" data-bs-interval="2000">
+                <img src="../images/banner3.png" class="d-block w-100" alt="...">
+
+            </div>
+            <div class="carousel-item">
+                <img src="../images/banner4.png" class="d-block w-100" alt="...">
+
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div> -->
+    <!-- Thông tin nổi bật -->
+    <!-- <div class="noibat">
+        <div class="title text-center my-3" style="font-size: 35px; color: #0d6efd;">
+            Thông tin nổi bật
+        </div>
+        <div class="content" style="display: flex; justify-content: center; margin: -5px;">
+            <div class="card" style="width: 18rem; margin: 5px;">
+                <img src="../images/img1.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text">Ẩm thực trên mây hạng thương gia</p>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem; margin: 5px;">
+                <img src="../images/img2.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text">Hạng thương gia</p>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem; margin: 5px;">
+                <img src="../images/img3.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text">Ẩm thực hạng phổ thông</p>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem; margin: 5px;">
+                <img src="../images/img4.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text">Hạng phổ thông đặc biệt</p>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- <div class="container my-2">
+        <div style="font-size: 35px; font-family: sans-serif; font-weight: 600; font-style: italic; color: #0d6efd;"
+            class="title text-center my-5">Những lợi ích bạn sẽ nhận được khi sử dụng dịch vụ</div>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="card h-100">
+                    <img src="./images/a1.jpg" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">An tâm trọn vẹn khi bay cùng Flyup</h5>
+                        <p class="card-text">Các chương trình bảo hiểm hấp dẫn đến từ các đối tác bảo hiểm uy tín của
+                            Flyup
+                        </p>
+                        <p class="card-text"> Thủ tục mua và bồi thường đơn giản, nhanh chóng</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-body-secondary">Fly-up</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="./images/a2.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Vận chuyển Bắc - Trung - Nam nhanh chóng, thuận tiện</h5>
+                        <p class="card-text">
+                            Rút ngắng khoảng cách hàng nghìn KM trong thời gian ngắn nhất
+                        </p>
+                        <p class="card-text">Đăt đơn gửi và nhận 24/7</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-body-secondary">Fly-up</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="./images/a3.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Ưu đãi dành cho chủ thẻ mới </h5>
+                        <p class="card-text">Ưu tiên check in tại sân bay dành cho hạng thẻ platinum</p>
+                        <p class="card-text">Giảm đến 50% mua sắm, du lịch, ăn uống</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-body-secondary">Fly-up</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- <div class="container my-3">
+        <h3 class="text-center my-5"
+            style="font-size: 35px; font-family: sans-serif; font-weight: 600; font-style: italic; color: #0d6efd;">Địa
+            điểm du lịch hot nhất năm 2023</h3>
+        <div class="row row-cols-1 row-cols-md-4 g-4">
+            <div class="col">
+                <div class="card h-100">
+                    <img src="./images/ha-nam.jpg" class="card-img-top">
+                    <div class="name">Hà Nam</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="./images/quang-ninh.jpg" class="card-img-top">
+                    <div class="name">Quảng Ninh</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="./images/ha-giang.jpg" class="card-img-top">
+                    <div class="name">Hà Giang</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="./images/quang-binh.jpg" class="card-img-top">
+                    <div class="name">Quảng Bình </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="./images/gia-lai.jpg" class="card-img-top">
+                    <div class="name">Gia Lai</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="./images/phu-quoc.png" class="card-img-top">
+                    <div class="name">Phú Quốc </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="./images/thanh-hoa.jpg" class="card-img-top">
+                    <div class="name">Thanh Hoá </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="./images/nghe-an.jpg" class="card-img-top">
+                    <div class="name">Nghệ An</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="./images/ha-noi.jpg" class="card-img-top">
+                    <div class="name">Hà Nội</div>
+                </div>
+            </div>
+
+        </div>
+    </div> -->
+    <!--  -->
+    <!-- <div class="container mg-5 text-center">
+        <div class="banner text-center">
+            <img src="../images/vietject.png" alt="">
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="title">
+                    120+
+                </div>
+                <div>Đường bay nội địa và quốc tế</div>
+            </div>
+            <div class="col">
+                <div class="title">
+                    400+
+                </div>
+                <div>Chuyến bay mỗi ngày</div>
+            </div>
+            <div class="col">
+                <div class="title">
+                    6000+
+                </div>
+                <div>Nhân viên thân thiện, tận tình</div>
+            </div>
+            <div class="col">
+                <div class="title">
+                    100+
+                </div>
+                <div>Tàu bay mới hiện đại, bảo vệ môi trường</div>
+            </div>
+            <div class="col">
+                <div class="title">
+                    7★
+                </div>
+                <div>Xếp hạng hàng không an toàn cao nhất thế giới mức 7 sao
+
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!--  -->
+    <!-- footer -->
+    <footer class=" container-fluid my-2" style="border-top: rgb(183, 183, 183) ;">
+        <div class="row bg-dark text-white ">
+            <div class="col-md-2">
+                <a href="#/home">
+                    <img src="../images/lgden.png" alt="">
+                </a>
+
+
+            </div>
+            <div class="col-md-2">
+                <div class="title">Fly up</div>
+                <div class="content">
+                    <ul>
+                        <li>Giới Thiệu Công Ty</li>
+                        <li>Đội Bay</li>
+                        <li>Đối Tác</li>
+                        <li>Thông Tin Truyền Thông</li>
+                        <li>Trách Nhiệm Xã Hội</li>
+                        <li>Quan Hệ Cổ Đông</li>
+                        <li>Thông Tin Đấu Thầu</li>
+                        <li>Làm việc với Fly up</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="title">
+                    Pháp lý
+                </div>
+                <div class="content">
+                    <ul>
+                        <li>Các điều kiện và điều khoản</li>
+                        <li>Điều lệ vận chuyển</li>
+                        <li>Điều kiện sử dụng cookie</li>
+                        <li>Bảo mật thông tin</li>
+                        <li>Quy chế hoạt động sàn TMDT</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="title">
+                    Hỗ trợ
+                </div>
+                <div class="content">
+                    <ul>
+                        <li>Góp ý dịch vụ</li>
+                        <li>Trung tâm trợ giúp</li>
+                        <li>Liện hệ với chi nhánh của Fly up</li>
+                        <li>Chính sách bảo vệ hành khách</li>
+                        <li>Trợ lý ảo của Fly up</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="title">
+                    Vận chuyển hàng hoá
+                </div>
+                <div class="content">
+                    <ul>
+                        <li>Trang web hàng hoá</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="title">
+                    Hỗ trợ khách hàng
+                </div>
+                <div class="content">
+                    <ul>
+                        <li>Chương trình CSKH</li>
+                        <li>Gửi yêu cầu hỗ trợ</li>
+                        <div class="mb-3">
+                            <input type="email" class="form-control my-2" id="exampleFormControlInput1"
+                                placeholder="name@example.com">
+                            <button class="btn btn-primary my-2">Gửi</button>
+                        </div>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- <script src="./controller/app.js"></script> -->
+    <script src="./controller/ListProductController.js"></script>
+    <script src="./controller/AddProductcontroller.js"></script>
+    <script src="./controller/DetailProductController.js"></script>
+    <script src="./controller/EditProductController.js"></script>
+    <script>
+        //chuyển trang
+        var myApp = angular.module("myApp", ["ngRoute"]);
+        myApp.config(function ($routeProvider) {
+            $routeProvider
+                .when("/home", {
+                    templateUrl: "/pages/home.html",
+                    controller: ListProductController
+                })
+                .when("/gioi-thieu", {
+                    templateUrl: "/pages/gioithieu.html",
+                })
+                .when("/tin-tuc", {
+                    templateUrl: "/pages/tintuc.html",
+                })
+                .when("/lien-he", {
+                    templateUrl: "/pages/lienhe.html",
+                })
+                .when("/dat-ve", {
+                    templateUrl: "/pages/datve.html",
+                })
+                .when("/chi-tiet", {
+                    templateUrl: "/pages/detail.html",
+                })
+                .when("/list-product", {
+                    templateUrl: "/pages/ListProduct.html",
+                    controller: ListProductController
+                })
+                .when("/add-product", {
+                    templateUrl: "/pages/add-prod.html",
+                    controller: AddProductController
+                })
+                .when("/detail-product/:id", {
+                    templateUrl: "/pages/DetailProduct.html",
+                    controller: DetailProductController
+                })
+                .when("/update-product/:id", {
+                    templateUrl: "/pages/UpdateProduct.html",
+                    controller: EditProductController
+                })
+                .otherwise({
+                    redirectTo: "/home",
+                });
+        }) 
+    </script>
+</body>
+
+</html>
